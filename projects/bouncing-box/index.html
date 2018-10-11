@@ -1,15 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bouncing Box</title>
+	<script src="jquery.min.js"></script>
 
+<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+	<!-- BEGIN CSS -->
+	<style>
+		/* TODO 1 */
+		[class="box"] {
+			display: block;
+			position: absolute;
+			width: 70px;
+			height: 80px;
+			top: 100px;
+			left: 0px;
+			background-color: blue;
+			font-size: 300%;
+			text-align: center;
+		}
+		body {
+		 background-image: url("https://cdn.wikimg.net/strategywiki/images/thumb/7/75/Pokemon-GSC-Johto-EcruteakCity.png/500px-Pokemon-GSC-Johto-EcruteakCity.png");	
+		}
+	</style>
+
+</head>
+<body class="board">
+	<!-- HTML for the box -->
+	<div class="box">?</div>
+</body>
+
+	<!-- BEGIN JAVASCRIPT -->
+	<script>
+		(function(){
+			'use strict'
+			/* global &*/
+
+			// Variable declarations
+			var box;
+			var boardWidth;
+			var update;
+			var handleBoxClick;
+			
+			// jQuery stuff setup for you
+			box = $('.box');
+			boardWidth = $('.board').width();
+
+			// TODO 2 - Variable Declarations
+             var position;
+             var points; 
+             var speed;
+             var direction;
+             
+            
+             
+             position = 100;
+             points = 5;
+             speed = 10;
+             direction = 1;
+
+		 box.css('left', position);
+             box.text(points);
 
 			
-			var update = function() {
-				// TODO 3 / 6 / 7 / 8
+				// TODO 3 / 6 / 7 / 8	};
 				
+				var update = function(){
+				// TODO 3 / 6 / 7 / 8
+				position = position + (speed * direction);
+			
+				 if (position > boardWidth) {
+				 	position = 0;
+                 direction = -1
+				 }else if (position <=0) {
+					direction = 1
+				 }
+				 	box.css('left', position);
 			};
 
 
 			
 			var handleBoxClick = function() {
 				// TODO 4 / 5
+				position = 0;
+				speed = speed + 3;
+				points = points + 1;
+				box.text (points);
 				
 			};
 
